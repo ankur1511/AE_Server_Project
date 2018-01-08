@@ -6,9 +6,9 @@ package com.jay.web.model;
 /*model holds all the login related data..*/
 public class LoginEntity {
 
-    private int userId = 0;
+    private int userId;
 
-    private String userPd = "";
+    private String userPd ;
 
     public int getUserId(){
         return userId;

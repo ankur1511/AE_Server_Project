@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.*;
-import io.swagger.annotations.*;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,29 +19,14 @@ import java.util.List;
 @RestController
 public class LoginController {
 
-    @Autowired
-    private LoginEntity loginEntity;
-
-    @Autowired
-    private LoginService loginService;
-
-    @Autowired
-    private ResponseEntity responseEntity;
-
-    @RequestMapping(value = "/roles",
-            method = RequestMethod.POST)
-    public ResponseEntity postLoginData(
-            @ApiParam(value = "New role info", required = true) @RequestBody LoginEntity login;
-    ) {
-
-        List<Error> errors = new ArrayList<>();
-        ResponseEntity response = null;
-        LoginEntity newLogin = createLogin(login); //loginService.createLogin(login);
-        responseEntity = new ResponseEntity<>(newLogin, HttpStatus.CREATED);
-        return responseEntity;
-    }
-
-    private void createLogin(LoginEntity loginEntity){
-
+    private LoginEntity loginEntity = new LoginEntity();
+    
+    @RequestMapping(value = "/welcome" )
+    public LoginEntity User(){
+    	loginEntity.setUserId(123);
+    	loginEntity.setPassword("Jay");
+    	
+		return loginEntity;
+    	
     }
 }
