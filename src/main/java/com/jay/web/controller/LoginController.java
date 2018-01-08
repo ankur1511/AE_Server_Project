@@ -19,14 +19,18 @@ import java.util.List;
 @RestController
 public class LoginController {
 
+	@Autowired
     private LoginEntity loginEntity = new LoginEntity();
     
     @RequestMapping(value = "/welcome" )
-    public LoginEntity User(){
+    public ResponseEntity<LoginEntity> User(){
     	loginEntity.setUserId(123);
     	loginEntity.setPassword("Jay");
     	
-		return loginEntity;
+    	ResponseEntity<LoginEntity> res = null;
+    	res = new ResponseEntity<LoginEntity>(loginEntity,HttpStatus.OK);
+    	
+		return res;
     	
     }
 }
